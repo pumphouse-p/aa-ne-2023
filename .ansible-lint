@@ -1,0 +1,6 @@
+---
+exclude_paths:
+  - .github
+
+warn_list:
+  - yaml[new-line-at-end-of-file]
