@@ -1,6 +1,7 @@
 ---
 - name: Bootstrap initial objects onto AAP
   hosts: localhost
+  connection: local
   become: false
   gather_facts: false
   vars:
