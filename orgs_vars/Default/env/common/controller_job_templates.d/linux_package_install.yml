@@ -1,0 +1,23 @@
+---
+controller_templates:
+  - name: Linux / Package / Install
+    description: Install packages on Linux systems
+    job_type: run
+    inventory: Demo Inventory
+    project: Linux
+    playbook: playbooks/package_install.yml
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    ask_credential_on_launch: true
+    survey_enabled: true
+    survey_spec:
+      name: Packages to install
+      description: List of packages that should be installed on target systems
+      spec:
+        - question_name: Package Name(s)
+          question_description: List of packages (one per line) that should be installed
+          required: true
+          variable: survey_package_install_list
+          type: textarea
+          min: 0
+          max: 4096
