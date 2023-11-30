@@ -42,9 +42,12 @@
           dir_orgs_vars: orgs_vars
           organization: Default
           env: common
+    controller_launch_jobs:
+      - name: AAP / Apply state from SoT
 
   roles:
     - role: infra.controller_configuration.projects
     - role: infra.controller_configuration.project_update
     - role: infra.controller_configuration.credentials
     - role: infra.controller_configuration.job_templates
+    - role: infra.controller_configuration.job_launch
