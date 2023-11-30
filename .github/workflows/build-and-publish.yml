@@ -35,3 +35,4 @@ jobs:
           CONTROLLER_PASSWORD: ${{ secrets.CONTROLLER_PASSWORD }}
           CONTROLLER_HOST: ${{ secrets.CONTROLLER_HOST }}
           CONTROLLER_VERIFY_SSL: ${{ secrets.CONTROLLER_VERIFY_SSL }}
+          VAULT_PASSWORD: ${{ secrets.VAULT_PASSWORD }}
