@@ -1,0 +1,12 @@
+---
+controller_projects:
+  - name: Linux
+    organization: Default
+    scm_branch: main
+    scm_clean: 'no'
+    scm_delete_on_update: 'no'
+    scm_type: git
+    scm_update_on_launch: 'false'
+    scm_url: https://github.com/pumphouse-p/ansible-collection-linux.git
+    credential: SCM / GitHub
+    wait: true
