@@ -38,6 +38,10 @@
         organization: Default
         credentials:
           - AAP / Automates Cluster
+        extra_vars:
+          dir_orgs_vars: orgs_vars
+          organization: Default
+          env: common
 
   roles:
     - role: infra.controller_configuration.projects
