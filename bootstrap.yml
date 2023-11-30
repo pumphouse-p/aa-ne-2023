@@ -30,12 +30,16 @@
           verify_ssl: "{{ controller_validate_certs | bool }}"
     controller_templates:
       - name: AAP / Apply state from SoT
+        description: Applies the desired state found in our SoT to a target AAP environment
         job_type: run
         inventory: Demo Inventory
         project: Controller Configuration
         playbook: main.yml
         organization: Default
+        credentials:
+          - AAP / Automates Cluster
 
   roles:
     - role: infra.controller_configuration.projects
     - role: infra.controller_configuration.credentials
+    - role: infra.controller_configuration.job_templates
