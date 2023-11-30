@@ -18,6 +18,24 @@
         scm_type: git
         scm_update_on_launch: 'yes'
         scm_url: https://github.com/pumphouse-p/aa-ne-2023.git
+    controller_credentials:
+      - name: AAP / Automates Cluster
+        description: Credential for AAP Cluster used for Ansible Automates Demo
+        organization: Default
+        credential_type: Red Hat Ansible Automation Platform
+        inputs:
+          host: "{{ controller_username }}"
+          username: "{{ controller_username }}"
+          password: "{{ controller_password }}"
+          verify_ssl: "{{ controller_validate_certs }}"
+    controller_templates:
+      - name: AAP / Apply state from SoT
+        job_type: run
+        inventory: Demo Inventory
+        project: Controller Configuration
+        playbook: main.yml
+        organization: Default
 
   roles:
     - role: infra.controller_configuration.projects
+    - role: infra.controller_configuration.credentials
