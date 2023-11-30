@@ -1,0 +1,69 @@
+---
+- name: Ensure controller objects are at desired state
+  hosts: localhost
+  become: false
+  gather_facts: false
+  vars:
+    controller_username: "{{ lookup('env', 'CONTROLLER_USERNAME') }}"
+    controller_password: "{{ lookup('env', 'CONTROLLER_PASSWORD') }}"
+    controller_hostname: "{{ lookup('env', 'CONTROLLER_HOST') }}"
+    controller_validate_certs: "{{ lookup('env', 'CONTROLLER_VERIFY_SSL') }}"
+
+  pre_tasks:
+    - name: Setup authentication
+      when: controller_oauthtoken is not defined
+      tags:
+        - always
+      block:
+        - name: Get an oauth token
+          ansible.builtin.uri:
+            url: "https://{{ controller_hostname }}/api/v2/tokens/"
+            user: "{{ controller_username }}"
+            password: "{{ controller_password }}"
+            method: POST
+            force_basic_auth: true
+            validate_certs: "{{ controller_validate_certs }}"
+            status_code: 201
+          register: oauthtoken
+
+        - name: Set vars for oauth
+          ansible.builtin.set_fact:
+            controller_oauthtoken: "{{ oauthtoken.json.token }}"
+            controller_oauthtoken_url: "{{ oauthtoken.json.url }}"
+          no_log: true
+
+    - name: Seed initial data
+      block:
+        - name: Load organization and credential vars
+          ansible.builtin.include_role:
+            name: infra.controller_configuration.filetree_read
+            tasks_from: "{{ create_orgs_credentials }}"
+          loop:
+            - organizations.yml
+            - credentials.yml
+          loop_control:
+            loop_var: create_orgs_credentials
+
+        - name: Add galaxy credentials to organizations
+          ansible.builtin.include_role:
+            name: infra.controller_configuration.dispatch
+            apply:
+              tags:
+                - organizations
+                - credentials
+
+  roles:
+    - role: infra.controller_configuration.filetree_read
+    - role: infra.controller_configuration.dispatch
+
+  post_tasks:
+    - name: Delete the oauth token
+      ansible.builtin.uri:
+        url: "https://{{ controller_hostname }}{{ controller_oauthtoken_url }}"
+        user: "{{ controller_username }}"
+        password: "{{ controller_password }}"
+        method: DELETE
+        force_basic_auth: true
+        validate_certs: "{{ controller_validate_certs }}"
+        status_code: 204
+      when: controller_oauthtoken_url is defined
