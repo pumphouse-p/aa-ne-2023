@@ -9,6 +9,7 @@
     controller_password: "{{ lookup('env', 'CONTROLLER_PASSWORD') }}"
     controller_hostname: "{{ lookup('env', 'CONTROLLER_HOST') }}"
     controller_validate_certs: "{{ lookup('env', 'CONTROLLER_VERIFY_SSL') }}"
+    vault_password: "{{ lookup('env', 'VAULT_PASSWORD') }}"
     controller_projects:
       - name: Controller Configuration
         organization: Default
@@ -28,6 +29,12 @@
           username: "{{ controller_username }}"
           password: "{{ controller_password }}"
           verify_ssl: "{{ controller_validate_certs | bool }}"
+      - name: VAULT / Default
+        description: Credential to unseal vault-encrypted var files
+        organization: Default
+        credential_type: Vault
+        inputs:
+          vault_password: "{{ vault_password }}"
     controller_templates:
       - name: AAP / Apply state from SoT
         description: Applies the desired state found in our SoT to a target AAP environment
@@ -38,6 +45,7 @@
         organization: Default
         credentials:
           - AAP / Automates Cluster
+          - VAULT / Default
         extra_vars:
           dir_orgs_vars: orgs_vars
           orgs: Default
