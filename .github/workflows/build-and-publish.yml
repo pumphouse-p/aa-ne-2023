@@ -1,0 +1,36 @@
+name: build-and-publish
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Ansible Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout codebase
+        uses: actions/checkout@v4
+
+      - name: Go linting
+        uses: ansible/ansible-lint@main
+
+  publish:
+    name: Publish to AAP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout codebase
+        uses: actions/checkout@v4
+
+      - name: Install python prerequisites
+        run: pip3 install -r requirements.txt
+
+      - name: Install ansible prerequisites
+        run: ansible-galaxy collection install -r collections/requirements.yml
+        
+      - name: Run bootstrap.yml playbook
+        run: ansible-playbook -i localhost, bootstrap.yml
+        env:
+          CONTROLLER_USERNAME: ${{ secrets.CONTROLLER_USERNAME }}
+          CONTROLLER_PASSWORD: ${{ secrets.CONTROLLER_PASSWORD }}
+          CONTROLLER_HOST: ${{ secrets.CONTROLLER_HOST }}
+          CONTROLLER_VERIFY_SSL: ${{ secrets.CONTROLLER_VERIFY_SSL }}

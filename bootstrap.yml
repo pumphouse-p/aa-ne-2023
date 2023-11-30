@@ -1,0 +1,22 @@
+---
+- name: Bootstrap initial objects onto AAP
+  hosts: localhost
+  become: false
+  gather_facts: false
+  vars:
+    controller_username: "{{ lookup('env', 'CONTROLLER_USERNAME') }}"
+    controller_password: "{{ lookup('env', 'CONTROLLER_PASSWORD') }}"
+    controller_hostname: "{{ lookup('env', 'CONTROLLER_HOST') }}"
+    controller_validate_certs: "{{ lookup('env', 'CONTROLLER_VERIFY_SSL') }}"
+    controller_projects:
+      - name: Controller Configuration
+        organization: Default
+        scm_branch: main
+        scm_clean: 'no'
+        scm_delete_on_update: 'no'
+        scm_type: git
+        scm_update_on_launch: 'yes'
+        scm_url: https://github.com/pumphouse-p/aa-ne-2023.git
+
+  roles:
+    - role: infra.controller_configuration.projects
