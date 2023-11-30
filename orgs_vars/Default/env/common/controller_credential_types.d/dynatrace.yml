@@ -1,0 +1,21 @@
+---
+controller_credential_types:
+  - name: Dynatrace
+    description: Credential for Dynatrace authentication
+    inputs:
+      fields:
+        - id: dynatrace_env
+          type: string
+          label: Environment Name
+          secret: false
+        - id: dynatrace_token
+          type: string
+          label: Token
+          secret: true
+      required:
+        - dynatrace_env
+        - dynatrace_token
+    injectors:
+      env:
+        DYNATRACE_ENV: !unsafe "{{ dynatrace_env }}"
+        DYNATRACE_TOKEN: !unsafe "{{ dynatrace_token }}"
