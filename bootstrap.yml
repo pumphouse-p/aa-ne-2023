@@ -40,7 +40,7 @@
           - AAP / Automates Cluster
         extra_vars:
           dir_orgs_vars: orgs_vars
-          organization: Default
+          orgs: Default
           env: common
     controller_launch_jobs:
       - name: AAP / Apply state from SoT
