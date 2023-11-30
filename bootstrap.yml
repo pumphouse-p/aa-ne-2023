@@ -24,10 +24,10 @@
         organization: Default
         credential_type: Red Hat Ansible Automation Platform
         inputs:
-          host: "{{ controller_username }}"
+          host: "{{ controller_hostname }}"
           username: "{{ controller_username }}"
           password: "{{ controller_password }}"
-          verify_ssl: "{{ controller_validate_certs }}"
+          verify_ssl: "{{ controller_validate_certs | bool }}"
     controller_templates:
       - name: AAP / Apply state from SoT
         job_type: run
