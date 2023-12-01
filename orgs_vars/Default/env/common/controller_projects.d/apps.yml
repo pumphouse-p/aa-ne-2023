@@ -9,3 +9,4 @@ controller_projects:
     scm_update_on_launch: 'false'
     scm_url: https://github.com/pumphouse-p/ansible-collection-apps.git
     wait: true
+    credential: SCM / GitHub
