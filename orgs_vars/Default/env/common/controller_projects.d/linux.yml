@@ -10,4 +10,3 @@ controller_projects:
     scm_url: https://github.com/pumphouse-p/ansible-collection-linux.git
     credential: SCM / GitHub
     wait: true
-    credential: SCM / GitHub
