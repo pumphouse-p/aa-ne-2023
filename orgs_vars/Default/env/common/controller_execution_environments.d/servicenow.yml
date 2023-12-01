@@ -1,0 +1,7 @@
+---
+controller_execution_environments:
+  - name: CUSTOM / ServiceNow
+    description: ServiceNow-related execution environment
+    image: quay.io/deparris/ee-servicenow:latest
+    credential: REGISTRY / Quay
+    pull: missing

@@ -1,0 +1,7 @@
+---
+controller_execution_environments:
+  - name: CUSTOM / Containers
+    description: Container-related execution environment
+    image: quay.io/deparris/ee-containers:latest
+    credential: REGISTRY / Quay
+    pull: missing

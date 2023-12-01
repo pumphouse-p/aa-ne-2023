@@ -1,0 +1,7 @@
+---
+controller_execution_environments:
+  - name: CUSTOM / IaaS
+    description: IaaS automation execution environment
+    image: quay.io/deparris/ee-iaas:latest
+    credential: REGISTRY / Quay
+    pull: missing

@@ -1,0 +1,7 @@
+---
+controller_execution_environments:
+  - name: CUSTOM / General
+    description: General purpose execution environment
+    image: quay.io/deparris/ee-main:latest
+    credential: REGISTRY / Quay
+    pull: missing

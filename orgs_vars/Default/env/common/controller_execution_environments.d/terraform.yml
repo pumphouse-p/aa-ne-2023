@@ -1,0 +1,7 @@
+---
+controller_execution_environments:
+  - name: CUSTOM / Terraform
+    description: Terraform-related execution environment
+    image: quay.io/deparris/ee-terraform:latest
+    credential: REGISTRY / Quay
+    pull: missing
