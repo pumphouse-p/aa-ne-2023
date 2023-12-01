@@ -1,6 +1,6 @@
 ---
 controller_projects:
-  - name: General 
+  - name: General
     organization: Default
     scm_branch: main
     scm_clean: 'no'
