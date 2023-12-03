@@ -11,7 +11,7 @@ controller_workflows:
     simplified_workflow_nodes:
       - all_parents_must_converge: false
         identifier: rhn_register
-        unified_job_template: RHEL / RHN / Register 
+        unified_job_template: RHEL / RHN / Register
         credentials: Demo Credential
         inventory: Demo Inventory
         success_nodes:
