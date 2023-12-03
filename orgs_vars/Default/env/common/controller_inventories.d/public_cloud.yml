@@ -1,5 +1,5 @@
----
-controller_inventories:
-  - name: Public Cloud
-    organization: Default
-    description: Inventory containing devices in public cloud providers
+# ---
+# controller_inventories:
+#   - name: Public Cloud
+#     organization: Default
+#     description: Inventory containing devices in public cloud providers

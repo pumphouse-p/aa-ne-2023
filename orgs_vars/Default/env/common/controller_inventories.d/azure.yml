@@ -1,5 +1,5 @@
----
-controller_inventories:
-  - name: Microsoft Azure
-    organization: Default
-    description: Inventory containing devices in Azure
+# ---
+# controller_inventories:
+#   - name: Microsoft Azure
+#     organization: Default
+#     description: Inventory containing devices in Azure
