@@ -1,0 +1,18 @@
+---
+controller_inventory_sources:
+  - name: us-east-2
+    description: Hosts in us-east-2 region
+    source: project
+    source_project: Infrastructure
+    update_on_launch: false
+    source_path: inventories/aws_ec2.yml
+    inventory: Amazon Web Services
+    organization: Default
+  - name: openenv-gfmjj
+    description: Hosts in openenv-gfmjj resource group
+    source: project
+    source_project: Infrastructure
+    update_on_launch: false
+    source_path: inventories/azure_rm.yml
+    inventory: Microsoft Azure
+    organization: Default
