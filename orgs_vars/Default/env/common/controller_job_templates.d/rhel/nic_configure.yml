@@ -7,6 +7,7 @@ controller_templates:
     ask_credential_on_launch: true
     ask_inventory_on_launch: true
     ask_limit_on_launch: true
+    survey_enabled: true
     survey_spec:
       name: NIC Configuration
       description: Desired configuration to apply to NIC
