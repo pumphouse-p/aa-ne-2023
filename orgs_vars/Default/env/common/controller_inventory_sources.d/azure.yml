@@ -1,10 +1,10 @@
----
-controller_inventory_sources:
-  - name: openenv-gfmjj
-    description: Hosts in openenv-gfmjj resource group
-    source: scm
-    source_project: Infrastructure
-    update_on_launch: false
-    source_path: inventories/azure_rm.yml
-    inventory: Microsoft Azure
-    organization: Default
+# ---
+# controller_inventory_sources:
+#   - name: openenv-gfmjj
+#     description: Hosts in openenv-gfmjj resource group
+#     source: scm
+#     source_project: Infrastructure
+#     update_on_launch: false
+#     source_path: inventories/azure_rm.yml
+#     inventory: Microsoft Azure
+#     organization: Default

@@ -8,11 +8,11 @@ controller_inventory_sources:
     source_path: inventories/homelab.yml
     inventory: Homelab
     organization: Default
-  - name: VMware vCenter
-    description: Hosts running on vCenter
-    source: scm
-    source_project: Infrastructure
-    update_on_launch: false
-    source_path: inventories/homelab.vmware.yml
-    inventory: Homelab
-    organization: Default
+  # - name: VMware vCenter
+  #   description: Hosts running on vCenter
+  #   source: scm
+  #   source_project: Infrastructure
+  #   update_on_launch: false
+  #   source_path: inventories/homelab.vmware.yml
+  #   inventory: Homelab
+  #   organization: Default
