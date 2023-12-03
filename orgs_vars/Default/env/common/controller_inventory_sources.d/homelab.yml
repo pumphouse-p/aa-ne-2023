@@ -2,7 +2,7 @@
 controller_inventory_sources:
   - name: Static
     description: Hosts defined statically
-    source: project
+    source: scm
     source_project: Infrastructure
     update_on_launch: false
     source_path: inventories/homelab.yml
@@ -10,7 +10,7 @@ controller_inventory_sources:
     organization: Default
   - name: VMware vCenter
     description: Hosts running on vCenter
-    source: project
+    source: scm
     source_project: Infrastructure
     update_on_launch: false
     source_path: inventories/homelab.vmware.yml
