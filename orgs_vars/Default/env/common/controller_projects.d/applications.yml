@@ -1,6 +1,6 @@
 ---
 controller_projects:
-  - name: Apps
+  - name: Applications
     organization: Default
     scm_branch: main
     scm_clean: 'no'
