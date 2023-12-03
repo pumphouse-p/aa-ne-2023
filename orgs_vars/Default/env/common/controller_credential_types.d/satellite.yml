@@ -22,7 +22,6 @@ controller_credential_types:
         - id: satellite_tls_verify
           label: Satellite TLS Verify
           type: boolean
-          secret: false
           help_text: Verify TLS Certificates
       required:
         - satellite_url
