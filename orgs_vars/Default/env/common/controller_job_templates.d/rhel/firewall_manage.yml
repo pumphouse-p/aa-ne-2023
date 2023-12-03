@@ -1,0 +1,30 @@
+---
+controller_templates:
+  - name: RHEL / Firewall / Manage
+    description: Manages firewalld configuration on RHEL-based systems
+    project: Linux
+    playbook: playbooks/firewalld_configure.yml
+    ask_credential_on_launch: true
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    survey_enabled: true
+    survey_spec:
+      name: Firewall Configuration
+      description: Survey used to collect information regarding service configuration on firewalld
+      spec:
+        - question_name: Service Name(s)
+          question_description: The service names (one per line) to configure
+          required: true
+          variable: firewall_services
+          type: textarea
+          min: 0
+          max: 4096
+        - question_name: Service State
+          question_description: The desired state of the service(s) on firewalld
+          default: disabled
+          required: true
+          variable: firewall_services_state
+          type: multiplechoice
+          choices:
+            - disabled
+            - enabled

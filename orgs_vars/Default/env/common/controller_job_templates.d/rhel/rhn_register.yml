@@ -1,0 +1,11 @@
+---
+controller_templates:
+  - name: RHEL / RHN / Register
+    description: Register systems with RHN
+    project: Linux
+    playbook: playbooks/rhel_register.yml
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    job_type: run
+    ask_credential_on_launch: true
+    execution_environment: CUSTOM / General

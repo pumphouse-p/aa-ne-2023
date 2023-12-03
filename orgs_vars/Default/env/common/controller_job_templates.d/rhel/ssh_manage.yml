@@ -1,0 +1,23 @@
+---
+controller_templates:
+  - name: RHEL / SSH Server / Manage
+    description: Manages SSH server daemon configuration on RHEL-based systems
+    project: Linux
+    playbook: playbooks/sshd_configure.yml
+    ask_credential_on_launch: true
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    survey_enabled: true
+    survey_spec:
+      name: SSH Server Configuration Parameters
+      description: Survey used to collect various configuration parameters for sshd
+      spec:
+        - question_name: Permit Root Login?
+          question_description: Allow root to login over SSH
+          default: 'false'
+          required: true
+          variable: ssh_permit_root_login
+          type: multiplechoice
+          choices:
+            - 'false'
+            - 'true'

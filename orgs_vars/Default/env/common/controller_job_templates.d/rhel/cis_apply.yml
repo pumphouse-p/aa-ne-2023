@@ -1,0 +1,11 @@
+---
+controller_templates:
+  - name: RHEL / CIS / Apply
+    description: Applies CIS baseline on RHEL 9
+    project: Linux
+    playbook: playbooks/cis_remediate.yml
+    ask_credential_on_launch: true
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    execution_environment: CUSTOM / General
+    become_enabled: true

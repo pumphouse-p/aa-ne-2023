@@ -1,0 +1,30 @@
+---
+controller_templates:
+  - name: RHEL / SELinux / Manage
+    description: Manages SELinux configuration on RHEL-based systems
+    project: Linux
+    playbook: playbooks/selinux_configure.yml
+    ask_credential_on_launch: true
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    survey_enabled: true
+    survey_spec:
+      name: SELinux Configuration
+      description: Survey used to collect information regarding SELinux configuration on RHEL-based systems
+      spec:
+        - question_name: SELinux State
+          question_description: Mode of operation for SELinux
+          required: false
+          variable: selinux_state
+          type: multiplechoice
+          default: enforcing
+          choices:
+            - enforcing
+            - permissive
+            - disabled
+        - question_name: SELinux Policy
+          question_description: SELinux security policy
+          default: targeted
+          required: false
+          variable: selinux_policy
+          type: text

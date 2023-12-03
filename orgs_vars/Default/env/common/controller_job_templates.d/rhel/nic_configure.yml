@@ -1,0 +1,18 @@
+---
+controller_templates:
+  - name: RHEL / NIC / Configure
+    description: Configure a dummy network interface on RHEL systems
+    project: Linux
+    playbook: playbooks/net_dummy_create.yml
+    ask_credential_on_launch: true
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    survey_spec:
+      name: NIC Configuration
+      description: Desired configuration to apply to NIC
+      spec:
+        - question_name: IP Address
+          question_description: IP address to assign to NIC
+          required: true
+          type: text
+          variable: ip_address
