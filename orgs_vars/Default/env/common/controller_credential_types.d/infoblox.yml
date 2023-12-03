@@ -4,7 +4,7 @@ controller_credential_types:
     description: Credential for Infoblox authentication
     inputs:
       fields:
-        - id: infoblox_host 
+        - id: infoblox_host
           type: string
           label: Infoblox Host
           secret: false
