@@ -5,6 +5,6 @@ controller_templates:
     project: Infrastructure
     playbook: playbooks/os/patch_systems.yml
     ask_limit_on_launch: true
-    ask_credentials_on_launch: true
+    ask_credential_on_launch: true
     ask_inventory_on_launch: true
     execution_environment: CUSTOM / General

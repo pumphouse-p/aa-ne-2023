@@ -1,0 +1,33 @@
+---
+controller_templates:
+  - name: Windows / Pagefile / Manage
+    description: Manage Windows pagefile configuration
+    project: Windows
+    playbook: playbooks/pagefile_configure.yml
+    ask_credential_on_launch: true
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    concurrent_jobs_enabled: true
+    survey_enabled: true
+    survey_spec:
+      name: Pagefile Configuration Parameters
+      description: Desired pagefile configuration
+      spec:
+        - question_name: Pagefile Drive Letter
+          question_description: The drive of the pagefile (e.g. C)
+          default: C
+          required: true
+          variable: pagefile_drive
+          type: text
+        - question_name: Pagefile Initial Size
+          question_description: Initial size of the pagefile in megabytes
+          required: true
+          variable: pagefile_initial_size
+          type: integer
+          min: 0
+        - question_name: Pagefile Maximum Size
+          question_description: Maximum size of the pagefile in megabytes
+          required: true
+          variable: pagefile_max_size
+          type: integer
+          min: 0

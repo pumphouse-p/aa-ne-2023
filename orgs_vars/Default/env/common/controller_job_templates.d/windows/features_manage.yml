@@ -1,0 +1,29 @@
+---
+controller_templates:
+  - name: Windows / Features / Manage
+    description: Manage Windows features
+    project: Windows
+    playbook: playbooks/features_configure.yml
+    ask_credential_on_launch: true
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    concurrent_jobs_enabled: true
+    survey_enabled: true
+    survey_spec:
+      name: Windows Features Parameters
+      description: Windows features to enable or disable
+      spec:
+        - question_name: Enabled Features
+          question_description: List of features (one per line) that should be enabled
+          required: false
+          variable: win_features_enabled
+          type: textarea
+          min: 0
+          max: 4096
+        - question_name: Disabled Features
+          question_description: List of features (one per line) that should be disabled
+          required: false
+          variable: win_features_disabled
+          type: textarea
+          min: 0
+          max: 4096

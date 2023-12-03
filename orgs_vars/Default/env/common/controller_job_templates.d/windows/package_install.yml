@@ -1,0 +1,21 @@
+---
+controller_templates:
+  - name: Windows / Package / Install
+    description: Install a package on Windows via Chocolatey
+    project: Windows
+    playbook: playbooks/chocolatey_install.yml
+    ask_credential_on_launch: true
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    survey_enabled: true
+    survey_spec:
+      name: Windows Package Parameters
+      description: Windows package to install
+      spec:
+        - question_name: Package Names
+          question_description: List of packages (one per line) that should be present
+          required: true
+          type: textarea
+          variable: packages_present
+          min: 0
+          max: 4096
