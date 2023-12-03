@@ -1,0 +1,60 @@
+---
+controller_templates:
+  - name: ServiceNow / Software CR / Open
+    description: Open a software change request in ServiceNow
+    project: Applications
+    inventory: Localhost
+    playbook: playbooks/servicenow/open_cr_software.yml
+    ask_credential_on_launch: true
+    concurrent_jobs_enabled: true
+    execution_environment: CUSTOM / General
+    survey_enabled: true
+    survey_spec:
+      name: Change Request Parameters
+      description: Hardware change request details
+      spec:
+        - question_name: Short Description
+          question_description: Short explanation describing the CR being opened
+          required: true
+          variable: cr_short_description
+          type: text
+          min: 0
+          max: 256
+        - question_name: Long Description
+          question_description: Long explanation describing the CR being opened
+          required: true
+          variable: cr_long_description
+          type: textarea
+          min: 0
+          max: 4096
+        - question_name: Impact
+          question_description: Measure of the business criticality of the affected service
+          default: medium
+          required: true
+          variable: cr_impact
+          type: multiplechoice
+          choices:
+            - low
+            - medium
+            - high
+        - question_name: Priority
+          question_description: Sequence in which the change should be implemented
+          default: moderate
+          required: true
+          variable: cr_priority
+          type: multiplechoice
+          choices:
+            - low
+            - moderate
+            - high
+            - critical
+        - question_name: Risk
+          question_description: Amount of risk associated with change implementation
+          default: moderate
+          required: true
+          variable: cr_risk
+          type: multiplechoice
+          choices:
+            - low
+            - moderate
+            - high

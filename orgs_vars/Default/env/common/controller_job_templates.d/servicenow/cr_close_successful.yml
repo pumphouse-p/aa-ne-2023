@@ -1,0 +1,22 @@
+---
+controller_templates:
+  - name: ServiceNow / CR / Close Successful
+    description: Close a change request as successful
+    project: Applications
+    inventory: Localhost
+    playbook: playbooks/servicenow/close_cr_success.yml
+    ask_credential_on_launch: true
+    concurrent_jobs_enabled: true
+    execution_environment: CUSTOM / General
+    survey_enabled: true
+    survey_spec:
+      name: Change Request Parameters
+      description: Change request to close
+      spec:
+        - question_name: Change Request Num
+          question_description: The number of the change request to close
+          required: false
+          variable: snow_change_request_num
+          type: text
+          min: 0
+          max: 64
