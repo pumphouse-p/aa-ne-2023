@@ -1,0 +1,21 @@
+---
+controller_credential_types:
+  - name: Red Hat Network
+    description: Credential for RHN authentication
+    inputs:
+      fields:
+        - id: rhn_username
+          type: string
+          label: RHN Username
+          secret: false
+        - id: rhn_password
+          type: string
+          label: RHN Password
+          secret: true
+      required:
+        - rhn_username
+        - rhn_password
+    injectors:
+      extra_vars:
+        rhn_username: !unsafe "{{ rhn_username }}"
+        rhn_password: !unsafe "{{ rhn_password }}"

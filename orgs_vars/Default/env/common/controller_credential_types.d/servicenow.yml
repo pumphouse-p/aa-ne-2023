@@ -1,0 +1,27 @@
+---
+controller_credential_types:
+  - name: ServiceNow
+    description: Credential for ServiceNow authentication
+    inputs:
+      fields:
+        - id: servicenow_instance
+          type: string
+          label: ServiceNow Instance Name
+          secret: false
+        - id: servicenow_username
+          type: string
+          label: ServiceNow Username
+          secret: false
+        - id: servicenow_password
+          type: string
+          label: ServiceNow Password
+          secret: true
+      required:
+        - servicenow_instance
+        - servicenow_username
+        - servicenow_password
+    injectors:
+      env:
+        SN_HOST: !unsafe "{{ servicenow_instance }}"
+        SN_USERNAME: !unsafe "{{ servicenow_username }}"
+        SN_PASSWORD: !unsafe "{{ servicenow_password }}"

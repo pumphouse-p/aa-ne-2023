@@ -1,0 +1,41 @@
+---
+controller_credential_types:
+  - name: Red Hat Satellite
+    description: Credential for Red Hat Satellite authentication
+    inputs:
+      fields:
+        - id: satellite_url
+          label: Satellite URL
+          type: string
+          secret: false
+          help_text: URL (e.g. https://satellite.example.com) to Satellite Server
+        - id: satellite_username
+          label: Satellite Username
+          type: string
+          secret: false
+          help_text: Satellite username to authenticate as
+        - id: satellite_password
+          label: Satellite Password
+          type: string
+          secret: true
+          help_text: Satellite password to use for authentication
+        - id: satellite_tls_verify
+          label: Satellite TLS Verify
+          type: boolean
+          secret: false
+          help_text: Verify TLS Certificates
+      required:
+        - satellite_url
+        - satellite_username
+        - satellite_password
+    injectors:
+      env:
+        FOREMAN_PASSWORD: !unsafe "{{ satellite_password }}"
+        FOREMAN_USERNAME: !unsafe "{{ satellite_username }}"
+        FOREMAN_SERVER_URL: !unsafe "{{ satellite_url }}"
+        FOREMAN_VALIDATE_CERTS: !unsafe "{{ satellite_tls_verify }}"
+      extra_vars:
+        foreman_password: !unsafe "{{ satellite_password }}"
+        foreman_username: !unsafe "{{ satellite_username }}"
+        foreman_server_url: !unsafe "{{ satellite_url }}"
+        foreman_validate_certs: !unsafe "{{ satellite_tls_verify }}"

@@ -1,0 +1,32 @@
+---
+controller_credential_types:
+  - name: Infoblox
+    description: Credential for Infoblox authentication
+    inputs:
+      fields:
+        - id: infoblox_host 
+          type: string
+          label: Infoblox Host
+          secret: false
+        - id: infoblox_username
+          type: string
+          label: Infoblox User
+          secret: false
+        - id: infoblox_password
+          type: string
+          label: Infoblox Password
+          secret: true
+        - id: infoblox_validate_certs
+          type: boolean
+          label: Infoblox Validate Certs
+      required:
+        - infoblox_host
+        - infoblox_username
+        - infoblox_password
+        - infoblox_validate_certs
+    injectors:
+      env:
+        INFOBLOX_HOST: !unsafe "{{ infoblox_host }}"
+        INFOBLOX_USERNAME: !unsafe "{{ infoblox_username }}"
+        INFOBLOX_PASSWORD: !unsafe "{{ infoblox_password }}"
+        INFOBLOX_SSL_VERIFY: !unsafe "{{ infoblox_validate_certs }}"

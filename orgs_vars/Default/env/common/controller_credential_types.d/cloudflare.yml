@@ -1,0 +1,17 @@
+---
+controller_credential_types:
+  - name: Cloudflare DNS
+    description: Credential for Cloudflare authentication
+    inputs:
+      fields:
+        - id: cloudflare_token
+          type: string
+          label: Cloudflare Token
+          secret: true
+      required:
+        - cloudflare_token
+    injectors:
+      env:
+        CLOUDFLARE_TOKEN: !unsafe "{{ cloudflare_token }}"
+      extra_vars:
+        api_token: !unsafe "{{ cloudflare_token }}"

@@ -1,0 +1,33 @@
+---
+controller_credential_types:
+  - name: Terraform Azure
+    description: Credential for Azure authentication when using Terraform
+    inputs:
+      fields:
+        - id: arm_client_id
+          type: string
+          label: ARM Client ID
+          secret: false
+        - id: arm_client_secret
+          type: string
+          label: ARM Client Secret
+          secret: true
+        - id: arm_subscription_id
+          type: string
+          label: ARM Subscription ID
+          secret: false
+        - id: arm_tenant_id
+          type: string
+          label: ARM Tenant ID
+          secret: false
+      required:
+        - arm_client_id
+        - arm_client_secret
+        - arm_subscription_id
+        - arm_tenant_id
+    injectors:
+      env:
+        ARM_CLIENT_ID: '{{ arm_client_id }}'
+        ARM_TENANT_ID: '{{ arm_tenant_id }}'
+        ARM_CLIENT_SECRET: '{{ arm_client_secret }}'
+        ARM_SUBSCRIPTION_ID: '{{ arm_subscription_id }}'

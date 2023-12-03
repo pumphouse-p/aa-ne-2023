@@ -1,0 +1,32 @@
+---
+controller_credential_types:
+  - name: Jenkins
+    description: Credential for Jenkins authentication
+    inputs:
+      fields:
+        - id: jenkins_url
+          type: string
+          label: Jenkins URL
+          secret: false
+        - id: jenkins_username
+          type: string
+          label: Jenkins Username
+          secret: false
+        - id: jenkins_password
+          type: string
+          label: Jenkins Password
+          secret: true
+        - id: jenkins_validate_certs
+          type: boolean
+          label: Jenkins Validate Certs
+      required:
+        - jenkins_url
+        - jenkins_username
+        - jenkins_password
+        - jenkins_validate_certs
+    injectors:
+      extra_vars:
+        jenkins_url: !unsafe "{{ jenkins_url }}"
+        jenkins_username: !unsafe "{{ jenkins_username }}"
+        jenkins_password: !unsafe "{{ jenkins_password }}"
+        jenkins_validate_certs: !unsafe "{{ jenkins_validate_certs }}"

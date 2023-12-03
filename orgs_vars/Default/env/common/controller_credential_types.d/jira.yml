@@ -1,0 +1,27 @@
+---
+controller_credential_types:
+  - name: Jira
+    description: Credential for Jira authentication
+    inputs:
+      fields:
+        - id: jira_url
+          type: string
+          label: Jira Url
+          secret: false
+        - id: jira_username
+          type: string
+          label: Jira Username
+          secret: false
+        - id: jira_token
+          type: string
+          label: Jira Token
+          secret: true
+      required:
+        - jira_url
+        - jira_username
+        - jira_token
+    injectors:
+      extra_vars:
+        jira_uri: !unsafe "{{ jira_url }}"
+        jira_username: !unsafe "{{ jira_username }}"
+        jira_token: !unsafe "{{ jira_token }}"
