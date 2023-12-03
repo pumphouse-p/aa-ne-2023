@@ -1,0 +1,27 @@
+---
+controller_templates:
+  - name: Debug / Sleep
+    description: Basic job that just sleeps for a specified amount of time
+    project: Infrastructure
+    playbook: playbooks/sleep.yml
+    concurrent_jobs_enabled: true
+    execution_environment: CUSTOM / General
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    survey_enabled: true
+    survey_spec:
+      name: Sleep parameters
+      description: How long to sleep for
+      spec:
+        - question_name: Sleep duration in seconds
+          question_description: Amount of time to sleep in seconds
+          required: false
+          variable: wait_for_boot_seconds
+          type: integer
+          min: 1
+        - question_name: Sleep duration in minutes
+          question_description: Amount of time to sleep minutes
+          required: false
+          variable: wait_for_boot_minutes
+          type: integer
+          min: 1

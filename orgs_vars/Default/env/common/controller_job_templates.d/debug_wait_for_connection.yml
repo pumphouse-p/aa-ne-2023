@@ -1,0 +1,9 @@
+---
+controller_templates:
+  - name: Debug / Wait for Connection
+    description: Wait for connectivity to target systems
+    project: Infrastructure
+    playbook: playbooks/wait_for_connection.yml
+    concurrent_jobs_enabled: true
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true

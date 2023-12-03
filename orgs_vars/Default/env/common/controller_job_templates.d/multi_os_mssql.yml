@@ -1,0 +1,28 @@
+---
+controller_templates:
+  - name: Software / Multi-OS / MSSQL Server
+    description: Sets up Microsoft SQL Server on systems
+    project: Windows
+    playbook: playbooks/sql_install.yml
+    ask_credential_on_launch: true
+    concurrent_jobs_enabled: true
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    survey_spec:
+      name: MSSQL Configuration Parameters
+      description: MSSQL Configuration Parameters
+      spec:
+        - question_name: MSSQL Admin Password
+          question_description: MSSQL admin user password
+          required: true
+          variable: microsoft_sql_server_password
+          type: password
+        - question_name: MSSQL Version
+          question_description: Version of MSSQL to install
+          required: true
+          variable: microsoft_sql_server_version
+          type: multiplechoice
+          choices:
+            - 2022
+            - 2019
+            - 2017

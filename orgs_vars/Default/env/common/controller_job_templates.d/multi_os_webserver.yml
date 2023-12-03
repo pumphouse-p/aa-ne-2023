@@ -1,0 +1,10 @@
+---
+controller_templates:
+  - name: Software / Multi-OS / Webserver
+    description: Sets up a webserver on hosts
+    project: Applications
+    playbook: playbooks/webserver/webserver_install.yml
+    ask_credential_on_launch: true
+    concurrent_jobs_enabled: true
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true

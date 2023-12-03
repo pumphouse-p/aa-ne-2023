@@ -1,0 +1,9 @@
+---
+controller_templates:
+  - name: Multi-OS / System / Reboot
+    description: Reboot systems
+    project: Infrastructure
+    playbook: playbooks/system_reboot.yml
+    ask_credential_on_launch: true
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true

@@ -1,0 +1,20 @@
+---
+controller_templates:
+  - name: Kubernetes / Namespace / Delete
+    description: Ensures a namespace does not exist on a Kubernetes cluster
+    project: Containers
+    inventory: Localhost
+    playbook: playbooks/kubernetes/namespaces.yml
+    concurrent_jobs_enabled: true
+    ask_credential_on_launch: true
+    execution_environment: CUSTOM / Containers
+    survey_spec:
+      name: Namespace Parameters
+      description: Namespace parameters
+      spec:
+        - question_name: Namespace Name
+          required: true
+          variable: namespace_absent_name
+          type: text
+          min: 1
+          max: 128

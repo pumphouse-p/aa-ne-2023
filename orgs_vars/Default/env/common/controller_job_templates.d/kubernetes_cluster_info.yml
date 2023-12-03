@@ -1,0 +1,10 @@
+---
+controller_templates:
+  - name: Kubernetes / Debug / Info
+    description: Gathers and outputs information about a Kubernetes cluster
+    project: Containers
+    inventory: Localhost
+    playbook: playbooks/kubernetes/cluster_info.yml
+    concurrent_jobs_enabled: true
+    ask_credential_on_launch: true
+    execution_environment: CUSTOM / Containers
