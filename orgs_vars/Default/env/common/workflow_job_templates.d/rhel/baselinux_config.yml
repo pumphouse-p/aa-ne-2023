@@ -1,0 +1,63 @@
+---
+controller_workflows:
+  - name: WF / RHEL / Baseline Configuration
+    description: Applies baseline configuration to RHEL systems
+    survey_enabled: false
+    allow_simulataneous: false
+    ask_inventory_on_launch: true
+    ask_limit_on_launch: true
+    ask_credential_on_launch: true
+    organization: Default
+    simplified_workflow_nodes:
+      - all_parents_must_converge: false
+        identifier: rhn_register
+        unified_job_template: RHEL / RHN / Register 
+        credentials: Demo Credential
+        inventory: Demo Inventory
+        success_nodes:
+          - firewall_manage
+          - selinux_manage
+          - ssh_manage
+      - all_parents_must_converge: false
+        identifier: firewall_manage
+        unified_job_template: RHEL / Firewall / Manage
+        credentials: Demo Credential
+        inventory: Demo Inventory
+        extra_data:
+          firewall_services: ssh
+          firewall_services_state: enabled
+        success_nodes:
+          - nic_configure
+      - all_parents_must_converge: false
+        identifier: selinux_manage
+        unified_job_template: RHEL / SELinux / Manage
+        credentials: Demo Credential
+        inventory: Demo Inventory
+        extra_data:
+          selinux_state: enforcing
+          selinux_policy: targeted
+        success_nodes:
+          - nic_configure
+      - all_parents_must_converge: false
+        identifier: ssh_manage
+        unified_job_template: RHEL / SSH Server / Manage
+        credentials: Demo Credential
+        inventory: Demo Inventory
+        extra_data:
+          ssh_permit_root_login: 'false'
+        success_nodes:
+          - nic_configure
+      - all_parents_must_converge: true
+        identifier: nic_configure
+        unified_job_template: RHEL / NIC / Configure
+        credentials: Demo Credential
+        inventory: Demo Inventory
+        extra_data:
+          ip_address: 172.30.30.30
+        success_nodes:
+          - cis_baseline
+      - all_parents_must_converge: true
+        identifier: cis_baseline
+        unified_job_template: RHEL / CIS / Apply
+        credentials: Demo Credential
+        inventory: Demo Inventory
